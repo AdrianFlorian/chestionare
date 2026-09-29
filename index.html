@@ -322,6 +322,7 @@ body[data-screen=home] .app{max-width:1140px}
 .ill-mot .k2{animation-delay:.8s}.ill-mot .k3{animation-delay:1.6s}.ill-mot .k4{animation-delay:2.2s}
 @keyframes rise{0%{opacity:0;transform:translateY(8px)}25%{opacity:1}100%{opacity:0;transform:translateY(-18px)}}
 @media (prefers-reduced-motion:reduce){.ill-mot .spark{opacity:1}}
+@media (max-width:360px){.coach .bubble .qt{min-height:9.8em}}
 .tbody{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
 .tkicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--purple)}
 .tcard h2{font-size:24px;font-weight:600;color:var(--ink);line-height:1.2;margin:6px 0 8px;letter-spacing:-.01em}
@@ -520,29 +521,48 @@ body[data-screen=home] .app{max-width:1140px}
 (function(){
   /* invented, affectionate quotes, clearly labelled as such on the page */
   const QUOTES = [
-    "„Nu există răspunsuri greșite. Există doar răspunsuri date luni dimineața, înainte de cafea.” ☕",
-    "„Schimbarea e singura constantă. Aia și colegul care «revine cu un mail» din 2019.” 📧",
-    "„Dacă ți-a ieșit «Dominant», felicitări. Acum lasă-i și pe colegi să-și termine propoziția.” 🎤",
-    "„Toleranța la ambiguitate se antrenează. Eu am început cu instrucțiunile de la IKEA și cu grupul de WhatsApp al blocului.” 🪛",
-    "„Motivația intrinsecă e când vii la training de drag. Motivația externă e când pe invitație scrie «prezența obligatorie».” 😄",
-    "„Adaptabilitate înseamnă să zâmbești când ședința de 15 minute ține o oră și se termină cu «facem un follow-up».” ⏰",
+    "„Dacă bifezi «5» la «Sunt sufletul petrecerii» și «5» la «Sunt o persoană rezervată», felicitări: ești introvertitul care a descoperit open bar-ul.” 🍾",
+    "„Ședința asta putea fi un email. Emailul ăla putea fi un «ok». Iar «ok»-ul ăla putea să nu existe deloc.” 📧",
+    "„Oamenii se pot schimba. Am văzut cu ochii mei. Și-au schimbat jobul.” 🚪",
+    "„Motivația intrinsecă e rară. Am văzut-o o dată, la un stagiar. I-a trecut până la prânz.” 🦄",
+    "„Cea mai rapidă adaptare la schimbare din istoria omenirii: anunțul că se dă prima de Crăciun.” 🎄",
+    "„Un Dominant și un Conform în aceeași ședință: unul vrea să decidă acum, celălalt vrea un Excel cu 14 tab-uri. Câștigă Excelul. Mereu.” 📊",
+    "„Liderul Dominant nu întreabă «ce părere aveți?». Întreabă «cine e de acord cu mine?».” 👑",
+    "„Influentul nu vine la ședință cu agendă. Vine cu playlist.” 🎶",
+    "„Dacă ai ieșit «Stabil», felicitări: ai aceeași parolă din 2011. Și aceeași cană. Și același loc în parcare.” ☕",
+    "„Adaptabilitate înseamnă să mergi cu CFR-ul, să ajungi cu doar o oră întârziere și să zici «a mers bine azi».” 🚆",
+    "„Toleranța la ambiguitate o înveți abia când primești feedback-ul «e ok, dar mai lucrează puțin la el».” 🤷",
+    "„Pasiune / Drive: răspunzi la mail la 23:47. Toleranță la ambiguitate: șeful îți răspunde la 23:48 cu un singur «?».” 🌙",
+    "„Motivație externă: bonurile de masă. Motivație integrată: bonurile de masă plus cafeaua gratis de la etajul trei.” 🍽️",
+    "„Team building-ul e singurul loc unde Dominantul, Influentul, Stabilul și Conformul se înțeleg perfect. Pe la a doua pălincă.” 🥃",
+    "„Spiritul de aventură e când deschizi atașamentul de la «IT Support» fără să întrebi pe nimeni. Nu recomand.” 🦠",
+    "„Dacă răspunzi «3» la toate afirmațiile, nu ești echilibrat. Ești diplomat. Sau ai venit direct din tura de noapte.” 😐",
+    "„Încrederea în sine e să intri în ședință fără să știi subiectul și să ieși cu un task alocat altcuiva.” 😎",
+    "„Optimismul e să crezi că «facem un call de 5 minute» chiar ține 5 minute.” 📞",
+    "„Stabilitatea emoțională e să citești grupul de WhatsApp al părinților de la grădiniță și să nu răspunzi. Nimic. Niciodată.” 🧘",
+    "„Feedback-ul sandviș: o laudă, o critică, o laudă. Tu ții minte doar critica. Și ți-o recitești la 3 dimineața.” 🥪",
+    "„Conform e singurul om care a citit instrucțiunile de la chestionarul ăsta. Salut, te-am văzut.” 👋",
+    "„Lipsa motivației nu e o problemă de caracter. E doar luni.” 😴",
+    "„Inventiv, cu resurse: nu merge proiectorul, faci prezentarea cu mâinile. Și cu sprâncenele.” 🤌",
     "„Optimismul e să pleci vineri la 16:00 pe Valea Prahovei și să zici «ajungem la cină».” 🚗",
+    "„Schimbarea e singura constantă. Aia și colegul care «revine cu un mail» din 2019.” 📧",
+    "„Încrederea în sine e să zici «da, știu Excel» la interviu. Adaptabilitatea e ce faci după.” 📊",
     "„Stabilitatea e o calitate. Dar dacă stai de 12 ani pe același scaun, nu e loialitate, e că s-a lipit.” 🪑",
     "„Sinceritatea e primul pas. Al doilea e să nu bifezi «5» la toate, că nu ești profil de LinkedIn.” ✅",
-    "„Spiritul de aventură nu înseamnă să comanzi altceva decât șaorma cu de toate. Dar e un început.” 🌯",
-    "„Inventiv, cu resurse: imprimanta zice «paper jam», tu rezolvi cu o agrafă și o rugăciune.” 🖨️",
-    "„Încrederea în sine e să zici «da, știu Excel» la interviu. Adaptabilitatea e ce faci după.” 📊",
-    "„Conform e omul care citește termenii și condițiile. L-am cunoscut o dată. Era obosit.” 📜",
-    "„Influentul intră în ședință fără agendă și iese cu trei prieteni noi și un buget aprobat.” 🤝",
+    "„Toleranța la ambiguitate se antrenează. Eu am început cu instrucțiunile de la IKEA și cu grupul de WhatsApp al blocului.” 🪛",
     "„Scorul tău nu te definește. Doar te descrie foarte exact, pe proiector, în fața colegilor.” 📽️"
   ];
   const q = document.getElementById("quote"), photo = document.getElementById("coachPhoto");
-  let i = Math.floor(Math.random() * QUOTES.length);
-  q.textContent = QUOTES[i];
+  let bag = [], last = -1;
+  function draw(){
+    if (!bag.length) { bag = QUOTES.map((_, k) => k).sort(() => Math.random() - .5); if (bag[0] === last) bag.push(bag.shift()); }
+    last = bag.shift(); return QUOTES[last];
+  }
+  q.textContent = draw();
   function nextQuote(){
-    i = (i + 1 + Math.floor(Math.random() * (QUOTES.length - 1))) % QUOTES.length;
+    const t = draw();
     q.classList.add("fade");
-    setTimeout(() => { q.textContent = QUOTES[i]; q.classList.remove("fade"); }, 220);
+    setTimeout(() => { q.textContent = t; q.classList.remove("fade"); }, 220);
     photo.classList.remove("wiggle"); void photo.offsetWidth; photo.classList.add("wiggle");
   }
   document.getElementById("nextQuote").addEventListener("click", nextQuote);
