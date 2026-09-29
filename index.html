@@ -283,12 +283,17 @@ footer.foot a:hover{color:var(--purple-dark);text-decoration:underline}
 .home{text-align:center;max-width:1080px;margin:0 auto}
 body[data-screen=home] .app{max-width:1140px}
 /* coach */
-.coach{display:flex;align-items:center;gap:26px;max-width:760px;margin:0 auto 40px;text-align:left}
-.coach-photo{flex:none;position:relative;width:128px;height:128px;border:0;padding:0;background:none;cursor:pointer;border-radius:50%}
-.coach-photo img{width:128px;height:128px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 5px #fff,0 0 0 8px var(--purple),0 14px 34px rgba(132,50,155,.28);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
-.coach-photo .tag{position:absolute;right:-10px;bottom:2px;background:#fff;border-radius:99px;font-size:20px;line-height:1;padding:6px 7px;box-shadow:0 4px 14px rgba(0,0,0,.14)}
+.coach{display:flex;align-items:center;gap:24px;max-width:900px;margin:0 auto 40px;text-align:left}
+.coach-photo{flex:none;position:relative;width:112px;height:112px;border:0;padding:0;background:none;cursor:pointer;border-radius:50%;transition:opacity .3s,filter .3s,transform .3s}
+.coach-photo img{width:112px;height:112px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 5px #fff,0 0 0 8px var(--purple),0 14px 34px rgba(132,50,155,.28);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.coach-photo .tag{transition:opacity .25s,transform .25s;position:absolute;right:-10px;bottom:2px;background:#fff;border-radius:99px;font-size:20px;line-height:1;padding:6px 7px;box-shadow:0 4px 14px rgba(0,0,0,.14)}
 @media (hover:hover){.coach-photo:hover img{transform:rotate(-6deg) scale(1.04)}}
 .coach-photo.wiggle img{animation:wig .5s ease}
+.coach[data-who=c] .p-f,.coach[data-who=f] .p-c{opacity:.55;filter:grayscale(.7);transform:scale(.88)}
+.coach[data-who=c] .p-f .tag,.coach[data-who=f] .p-c .tag{opacity:0;transform:scale(.4)}
+@media (hover:hover){.coach[data-who=c] .p-f:hover,.coach[data-who=f] .p-c:hover{opacity:.9;filter:none}}
+.p-f .tag{right:auto;left:-10px}
+.coach[data-who=f] .bubble::before{left:auto;right:-9px;transform:translateY(-50%) rotate(225deg)}
 @keyframes wig{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg)}60%{transform:rotate(6deg)}}
 .bubble{position:relative;flex:1;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px 22px 14px;box-shadow:0 12px 40px rgba(132,50,155,.09)}
 .bubble::before{content:"";position:absolute;left:-9px;top:50%;width:16px;height:16px;background:#fff;border-left:1px solid var(--line);border-bottom:1px solid var(--line);transform:translateY(-50%) rotate(45deg)}
@@ -338,8 +343,13 @@ body[data-screen=home] .app{max-width:1140px}
 .privacy{font-size:13px;color:var(--muted);margin:28px auto 0;display:flex;justify-content:center;align-items:center;gap:8px}
 .privacy svg{color:var(--purple)}
 @media (max-width:720px){
-  .coach{flex-direction:column;gap:18px;text-align:center;margin-bottom:30px}
-  .bubble::before{left:50%;top:-9px;transform:translateX(-50%) rotate(135deg)}
+  .coach{display:grid;grid-template-columns:1fr 1fr;column-gap:26px;row-gap:18px;text-align:center;margin-bottom:30px}
+  .p-c{grid-column:1;grid-row:1;justify-self:end}
+  .p-f{grid-column:2;grid-row:1;justify-self:start}
+  .coach .bubble{grid-column:1/-1;grid-row:2}
+  .coach-photo,.coach-photo img{width:96px;height:96px}
+  .coach .bubble::before,.coach[data-who=c] .bubble::before{left:calc(50% - 69px);right:auto;top:-9px;transform:rotate(135deg)}
+  .coach[data-who=f] .bubble::before{left:calc(50% + 53px);right:auto;top:-9px;transform:rotate(135deg)}
   .bubble .who{justify-content:center}
   .bubble .qt{font-size:17px;min-height:7em;display:flex;align-items:center;justify-content:center}
   .bubble .who .role{display:block;line-height:1.5;margin-top:2px}
@@ -382,18 +392,22 @@ body[data-screen=home] .app{max-width:1140px}
       <h1 id="homeTitle">Alegeți <span class="accent">chestionarul</span></h1>
       <p class="lead">Câte o afirmație pe pagină, cu rezultatele afișate imediat la final.</p>
 
-      <div class="coach">
-        <button class="coach-photo" id="coachPhoto" type="button" aria-label="Încă o înțelepciune de la Cătălin">
-          <img src="data:image/webp;base64,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" alt="Cătălin Stancu" width="128" height="128">
+      <div class="coach" id="coach" data-who="c">
+        <button class="coach-photo p-c" data-who="c" type="button" aria-label="O înțelepciune de la Cătălin">
+          <img src="data:image/webp;base64,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" alt="Cătălin Stancu" width="112" height="112">
           <span class="tag" aria-hidden="true">💬</span>
         </button>
         <div class="bubble" aria-live="polite">
-          <p class="qt" id="quote">„Nu există răspunsuri greșite. Există doar răspunsuri date luni dimineața, înainte de cafea.” ☕</p>
+          <p class="qt" id="quote">„Oamenii se pot schimba. Am văzut cu ochii mei. Și-au schimbat jobul.” 🚪</p>
           <div class="who">
-            <div><b>— Cătălin Stancu</b><span class="role"><span class="c">, </span>filozof de pauză de cafea</span><small>Citate 100% inventate, cu drag. Cătălin nu le-a zis niciodată. Dar sigur le-a gândit.</small></div>
+            <div><b id="qWho">— Cătălin Stancu</b><span class="role"><span class="c">, </span><span id="qRole">filozof de pauză de cafea</span></span><small>Citate 100% inventate, cu drag. Nu le-au zis niciodată. Dar sigur le-au gândit.</small></div>
             <button class="next-q" id="nextQuote" type="button">Încă o înțelepciune ↻</button>
           </div>
         </div>
+        <button class="coach-photo p-f" data-who="f" type="button" aria-label="O înțelepciune de la Florin">
+          <img src="data:image/webp;base64,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" alt="Florin Glință" width="112" height="112">
+          <span class="tag" aria-hidden="true">💬</span>
+        </button>
       </div>
 
       <div class="tests">
@@ -521,52 +535,73 @@ body[data-screen=home] .app{max-width:1140px}
 (function(){
   /* invented, affectionate quotes, clearly labelled as such on the page */
   const QUOTES = [
-    "„Dacă bifezi «5» la «Sunt sufletul petrecerii» și «5» la «Sunt o persoană rezervată», felicitări: ești introvertitul care a descoperit open bar-ul.” 🍾",
-    "„Ședința asta putea fi un email. Emailul ăla putea fi un «ok». Iar «ok»-ul ăla putea să nu existe deloc.” 📧",
-    "„Oamenii se pot schimba. Am văzut cu ochii mei. Și-au schimbat jobul.” 🚪",
-    "„Motivația intrinsecă e rară. Am văzut-o o dată, la un stagiar. I-a trecut până la prânz.” 🦄",
-    "„Cea mai rapidă adaptare la schimbare din istoria omenirii: anunțul că se dă prima de Crăciun.” 🎄",
-    "„Un Dominant și un Conform în aceeași ședință: unul vrea să decidă acum, celălalt vrea un Excel cu 14 tab-uri. Câștigă Excelul. Mereu.” 📊",
-    "„Liderul Dominant nu întreabă «ce părere aveți?». Întreabă «cine e de acord cu mine?».” 👑",
-    "„Influentul nu vine la ședință cu agendă. Vine cu playlist.” 🎶",
-    "„Dacă ai ieșit «Stabil», felicitări: ai aceeași parolă din 2011. Și aceeași cană. Și același loc în parcare.” ☕",
-    "„Adaptabilitate înseamnă să mergi cu CFR-ul, să ajungi cu doar o oră întârziere și să zici «a mers bine azi».” 🚆",
-    "„Toleranța la ambiguitate o înveți abia când primești feedback-ul «e ok, dar mai lucrează puțin la el».” 🤷",
-    "„Pasiune / Drive: răspunzi la mail la 23:47. Toleranță la ambiguitate: șeful îți răspunde la 23:48 cu un singur «?».” 🌙",
-    "„Motivație externă: bonurile de masă. Motivație integrată: bonurile de masă plus cafeaua gratis de la etajul trei.” 🍽️",
-    "„Team building-ul e singurul loc unde Dominantul, Influentul, Stabilul și Conformul se înțeleg perfect. Pe la a doua pălincă.” 🥃",
-    "„Spiritul de aventură e când deschizi atașamentul de la «IT Support» fără să întrebi pe nimeni. Nu recomand.” 🦠",
-    "„Dacă răspunzi «3» la toate afirmațiile, nu ești echilibrat. Ești diplomat. Sau ai venit direct din tura de noapte.” 😐",
-    "„Încrederea în sine e să intri în ședință fără să știi subiectul și să ieși cu un task alocat altcuiva.” 😎",
-    "„Optimismul e să crezi că «facem un call de 5 minute» chiar ține 5 minute.” 📞",
-    "„Stabilitatea emoțională e să citești grupul de WhatsApp al părinților de la grădiniță și să nu răspunzi. Nimic. Niciodată.” 🧘",
-    "„Feedback-ul sandviș: o laudă, o critică, o laudă. Tu ții minte doar critica. Și ți-o recitești la 3 dimineața.” 🥪",
-    "„Conform e singurul om care a citit instrucțiunile de la chestionarul ăsta. Salut, te-am văzut.” 👋",
-    "„Lipsa motivației nu e o problemă de caracter. E doar luni.” 😴",
-    "„Inventiv, cu resurse: nu merge proiectorul, faci prezentarea cu mâinile. Și cu sprâncenele.” 🤌",
-    "„Optimismul e să pleci vineri la 16:00 pe Valea Prahovei și să zici «ajungem la cină».” 🚗",
-    "„Schimbarea e singura constantă. Aia și colegul care «revine cu un mail» din 2019.” 📧",
-    "„Încrederea în sine e să zici «da, știu Excel» la interviu. Adaptabilitatea e ce faci după.” 📊",
-    "„Stabilitatea e o calitate. Dar dacă stai de 12 ani pe același scaun, nu e loialitate, e că s-a lipit.” 🪑",
-    "„Sinceritatea e primul pas. Al doilea e să nu bifezi «5» la toate, că nu ești profil de LinkedIn.” ✅",
-    "„Toleranța la ambiguitate se antrenează. Eu am început cu instrucțiunile de la IKEA și cu grupul de WhatsApp al blocului.” 🪛",
-    "„Scorul tău nu te definește. Doar te descrie foarte exact, pe proiector, în fața colegilor.” 📽️"
+    {"w": "c", "t": "„Dacă bifezi «5» la «Sunt sufletul petrecerii» și «5» la «Sunt o persoană rezervată», felicitări: ești introvertitul care a descoperit open bar-ul.” 🍾"},
+    {"w": "f", "t": "„Ședința asta putea fi un email. Emailul ăla putea fi un «ok». Iar «ok»-ul ăla putea să nu existe deloc.” 📧"},
+    {"w": "c", "t": "„Oamenii se pot schimba. Am văzut cu ochii mei. Și-au schimbat jobul.” 🚪"},
+    {"w": "f", "t": "„Motivația intrinsecă e rară. Am văzut-o o dată, la un stagiar. I-a trecut până la prânz.” 🦄"},
+    {"w": "c", "t": "„Cea mai rapidă adaptare la schimbare din istoria omenirii: anunțul că se dă prima de Crăciun.” 🎄"},
+    {"w": "f", "t": "„Un Dominant și un Conform în aceeași ședință: unul vrea să decidă acum, celălalt vrea un Excel cu 14 tab-uri. Câștigă Excelul. Mereu.” 📊"},
+    {"w": "c", "t": "„Liderul Dominant nu întreabă «ce părere aveți?». Întreabă «cine e de acord cu mine?».” 👑"},
+    {"w": "f", "t": "„Influentul nu vine la ședință cu agendă. Vine cu playlist.” 🎶"},
+    {"w": "c", "t": "„Dacă ai ieșit «Stabil», felicitări: ai aceeași parolă din 2011. Și aceeași cană. Și același loc în parcare.” ☕"},
+    {"w": "f", "t": "„Adaptabilitate înseamnă să mergi cu CFR-ul, să ajungi cu doar o oră întârziere și să zici «a mers bine azi».” 🚆"},
+    {"w": "c", "t": "„Toleranța la ambiguitate o înveți abia când primești feedback-ul «e ok, dar mai lucrează puțin la el».” 🤷"},
+    {"w": "f", "t": "„Pasiune / Drive: răspunzi la mail la 23:47. Toleranță la ambiguitate: șeful îți răspunde la 23:48 cu un singur «?».” 🌙"},
+    {"w": "c", "t": "„Motivație externă: bonurile de masă. Motivație integrată: bonurile de masă plus cafeaua gratis de la etajul trei.” 🍽️"},
+    {"w": "f", "t": "„Team building-ul e singurul loc unde Dominantul, Influentul, Stabilul și Conformul se înțeleg perfect. Pe la a doua pălincă.” 🥃"},
+    {"w": "c", "t": "„Spiritul de aventură e când deschizi atașamentul de la «IT Support» fără să întrebi pe nimeni. Nu recomand.” 🦠"},
+    {"w": "f", "t": "„Dacă răspunzi «3» la toate afirmațiile, nu ești echilibrat. Ești diplomat. Sau ai venit direct din tura de noapte.” 😐"},
+    {"w": "c", "t": "„Încrederea în sine e să intri în ședință fără să știi subiectul și să ieși cu un task alocat altcuiva.” 😎"},
+    {"w": "f", "t": "„Optimismul e să crezi că «facem un call de 5 minute» chiar ține 5 minute.” 📞"},
+    {"w": "c", "t": "„Stabilitatea emoțională e să citești grupul de WhatsApp al părinților de la grădiniță și să nu răspunzi. Nimic. Niciodată.” 🧘"},
+    {"w": "f", "t": "„Feedback-ul sandviș: o laudă, o critică, o laudă. Tu ții minte doar critica. Și ți-o recitești la 3 dimineața.” 🥪"},
+    {"w": "c", "t": "„Conform e singurul om care a citit instrucțiunile de la chestionarul ăsta. Salut, te-am văzut.” 👋"},
+    {"w": "f", "t": "„Lipsa motivației nu e o problemă de caracter. E doar luni.” 😴"},
+    {"w": "c", "t": "„Inventiv, cu resurse: nu merge proiectorul, faci prezentarea cu mâinile. Și cu sprâncenele.” 🤌"},
+    {"w": "f", "t": "„Optimismul e să pleci vineri la 16:00 pe Valea Prahovei și să zici «ajungem la cină».” 🚗"},
+    {"w": "c", "t": "„Schimbarea e singura constantă. Aia și colegul care «revine cu un mail» din 2019.” 📧"},
+    {"w": "f", "t": "„Încrederea în sine e să zici «da, știu Excel» la interviu. Adaptabilitatea e ce faci după.” 📊"},
+    {"w": "c", "t": "„Stabilitatea e o calitate. Dar dacă stai de 12 ani pe același scaun, nu e loialitate, e că s-a lipit.” 🪑"},
+    {"w": "f", "t": "„Sinceritatea e primul pas. Al doilea e să nu bifezi «5» la toate, că nu ești profil de LinkedIn.” ✅"},
+    {"w": "c", "t": "„Toleranța la ambiguitate se antrenează. Eu am început cu instrucțiunile de la IKEA și cu grupul de WhatsApp al blocului.” 🪛"},
+    {"w": "f", "t": "„Scorul tău nu te definește. Doar te descrie foarte exact, pe proiector, în fața colegilor.” 📽️"},
+    {"w": "f", "t": "„Cătălin zice că e «Stabil». Stabil e, într-adevăr: de 20 de minute tot zice «încă un slide și terminăm».” ⏳"},
+    {"w": "c", "t": "„Florin e «Conform». Are un Excel și pentru lista de cumpărături. Cu grafic. Și cu legendă.” 📊"},
+    {"w": "f", "t": "„Eu și Cătălin suntem complementari: el face glumele, eu fac slide-urile în care explic glumele.” 🗂️"},
+    {"w": "c", "t": "„Florin nu improvizează niciodată. Improvizațiile lui sunt planificate cu o săptămână înainte.” 🗓️"},
+    {"w": "f", "t": "„Cătălin are motivație intrinsecă. O vezi apărând instant când se anunță pauza de masă.” 🍽️"},
+    {"w": "c", "t": "„Parteneriatul perfect: eu vin cu ideea, Florin vine cu 14 întrebări de clarificare. Și are dreptate la 13.” 🤝"},
+    {"w": "f", "t": "„Cătălin ține training de ascultare activă. L-am întrebat ceva acum 10 minute. Încă aștept.” 👂"},
+    {"w": "c", "t": "„Florin îți testează toleranța la ambiguitate cu un singur cuvânt: «depinde». Apoi pleacă la cafea.” ☕"}
   ];
-  const q = document.getElementById("quote"), photo = document.getElementById("coachPhoto");
+  const WHO = {
+    c: {name: "— Cătălin Stancu", role: "filozof de pauză de cafea"},
+    f: {name: "— Florin Glință", role: "strateg de flipchart"}
+  };
+  const coach = document.getElementById("coach"), q = document.getElementById("quote");
+  const qWho = document.getElementById("qWho"), qRole = document.getElementById("qRole");
   let bag = [], last = -1;
-  function draw(){
-    if (!bag.length) { bag = QUOTES.map((_, k) => k).sort(() => Math.random() - .5); if (bag[0] === last) bag.push(bag.shift()); }
-    last = bag.shift(); return QUOTES[last];
+  function refill(){ bag = QUOTES.map((_, k) => k).sort(() => Math.random() - .5); if (bag[0] === last) bag.push(bag.shift()); }
+  function draw(who){
+    if (!bag.length) refill();
+    let k = who ? bag.findIndex(i => QUOTES[i].w === who) : 0;
+    if (k < 0) { refill(); k = who ? bag.findIndex(i => QUOTES[i].w === who) : 0; }
+    last = bag.splice(k, 1)[0]; return QUOTES[last];
   }
-  q.textContent = draw();
-  function nextQuote(){
-    const t = draw();
+  function paint(x){
+    coach.dataset.who = x.w; q.textContent = x.t;
+    qWho.textContent = WHO[x.w].name; qRole.textContent = WHO[x.w].role;
+  }
+  paint(draw());
+  function nextQuote(who){
+    const x = draw(who);
     q.classList.add("fade");
-    setTimeout(() => { q.textContent = t; q.classList.remove("fade"); }, 220);
-    photo.classList.remove("wiggle"); void photo.offsetWidth; photo.classList.add("wiggle");
+    setTimeout(() => { paint(x); q.classList.remove("fade"); }, 220);
+    const ph = coach.querySelector(".p-" + x.w);
+    ph.classList.remove("wiggle"); void ph.offsetWidth; ph.classList.add("wiggle");
   }
-  document.getElementById("nextQuote").addEventListener("click", nextQuote);
-  photo.addEventListener("click", nextQuote);
+  document.getElementById("nextQuote").addEventListener("click", () => nextQuote());
+  coach.querySelectorAll(".coach-photo").forEach(b => b.addEventListener("click", () => nextQuote(b.dataset.who)));
 })();
 </script>
 </body>
