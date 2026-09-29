@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Test de personalitate DISC: 80 de afirmații, câte una pe pagină, cu rezultatele afișate imediat.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Test de personalitate DISC · Sfera Business">
+<meta property="og:description" content="Descoperă cum acționezi, cum comunici și cum iei decizii, în 80 de afirmații scurte.">
+<meta property="og:image" content="https://adrianflorian.github.io/chestionare/og-disc.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<title>Test DISC · Sfera Business</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='30%25' r='75%25'%3E%3Cstop offset='0' stop-color='%23d7b6e3'/%3E%3Cstop offset='.55' stop-color='%2384329b'/%3E%3Cstop offset='1' stop-color='%234a1459'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='15' fill='url(%23g)'/%3E%3C/svg%3E">
+<style>
+:root{
+  --purple:#84329b; --purple-dark:#770080; --purple-deep:#5a1f6c;
+  --purple-50:#f7f2fa; --purple-100:#f0e6f5; --purple-200:#dcc4e6;
+  --ink:#020404; --text:#3f4245; --muted:#7c7f84; --line:#eaeaec; --panel:#f4f4f5; --field:#f7f5f4; --bg:#ffffff;
+  --d:#c0392b; --i:#e3a522; --s:#5b9a3c; --c:#3a6fc2;
+  --radius:10px;
+  --font:-apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}
+button{font:inherit;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+.bg-deco{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.bg-deco svg{position:absolute}
+.bg-deco .d1{top:-120px;right:-160px;width:720px;opacity:.5}
+.bg-deco .d2{bottom:-200px;left:-220px;width:620px;opacity:.35;transform:rotate(160deg)}
+.app{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 max(20px,env(safe-area-inset-right)) calc(40px + env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left));min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+header.top{display:flex;align-items:center;justify-content:space-between;padding:22px 0 18px;gap:16px}
+header.top img{height:32px;width:auto;display:block}
+.counter{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.counter b{color:var(--ink);font-weight:600}
+body:not([data-screen=quiz]) .counter{display:none}
+.brand{display:block;line-height:0;border-radius:6px}
+.home-link{font-size:14px;font-weight:500;color:var(--purple);text-decoration:none;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;padding:6px 2px}
+.home-link::before{content:"";width:7px;height:7px;border-left:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-top:1px}
+@media (hover:hover){.home-link:hover{color:var(--purple-dark);text-decoration:underline}}
+body[data-screen=quiz] .home-link{display:none}
+main{flex:1;display:flex;flex-direction:column;justify-content:center;padding:8px 0 24px}
+.screen{display:none}
+.screen.active{display:block;animation:fadeUp .5s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:52px;padding:0 26px;border-radius:var(--radius);border:2px solid var(--purple);background:#fff;color:var(--ink);font-weight:600;font-size:16px;cursor:pointer;transition:background .2s,border-color .2s,color .2s,transform .15s;text-decoration:none;white-space:nowrap}
+.btn .tri{width:0;height:0;border-left:11px solid var(--purple);border-top:7px solid transparent;border-bottom:7px solid transparent;transition:transform .2s}
+.btn .tri.back{border-left:0;border-right:11px solid var(--purple)}
+@media (hover:hover){
+.btn:hover{background:var(--purple-50)}
+.btn:hover .tri:not(.back){transform:translateX(3px)}
+.btn:hover .tri.back{transform:translateX(-3px)}
+}
+.btn:active{transform:scale(.98)}
+.btn.primary{background:var(--purple);color:#fff}
+.btn.primary .tri{border-left-color:#fff}
+@media (hover:hover){.btn.primary:hover{background:var(--purple-dark);border-color:var(--purple-dark)}}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--text);padding:0 14px}
+@media (hover:hover){.btn.ghost:hover{background:var(--panel)}}
+.btn:disabled{opacity:.35;cursor:not-allowed;transform:none}
+.btn:disabled:hover{background:inherit}
+.btn.primary:disabled:hover{background:var(--purple);border-color:var(--purple)}
+.btn:focus-visible,.opt:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid rgba(132,50,155,.35);outline-offset:3px}
+
+/* ---------- intro ---------- */
+.intro{text-align:center;max-width:760px;margin:0 auto}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--purple);background:var(--purple-50);border:1px solid var(--purple-100);padding:6px 14px;border-radius:99px;margin-bottom:22px}
+.pill i{width:7px;height:7px;border-radius:50%;background:var(--purple)}
+h1{font-size:clamp(36px,6.2vw,56px);font-weight:500;line-height:1.1;color:var(--ink);letter-spacing:-.025em;margin:0 0 18px}
+.accent{color:var(--purple)}
+h1,.lead{text-wrap:balance}
+.lead{font-size:clamp(17px,2.2vw,19px);margin:0 auto 30px;max-width:600px}
+.howto{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 28px;text-align:left;box-shadow:0 12px 40px rgba(132,50,155,.07);margin-bottom:22px}
+.howto p{margin:0 0 14px}
+.howto .honest{display:flex;gap:12px;align-items:flex-start;background:var(--purple-50);border-radius:12px;padding:12px 14px;color:var(--purple-deep);font-weight:500;margin:0 0 18px}
+.howto .honest svg{flex:none;margin-top:3px}
+.scale-row{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.scale-row div{background:var(--panel);border-radius:10px;padding:10px 6px;text-align:center;font-size:13px;line-height:1.25}
+.scale-row b{display:block;font-size:17px;color:var(--purple);margin-bottom:2px}
+.facts{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 24px;font-size:14px;color:var(--muted);margin:0 0 26px}
+.facts span{display:inline-flex;align-items:center;gap:8px}
+.facts svg{color:var(--purple)}
+.start-row{display:flex;gap:12px;align-items:flex-end;max-width:640px;margin:0 auto}
+.name-field{flex:1;text-align:left}
+.name-field label{display:block;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.name-field label span{font-weight:400;color:var(--muted)}
+.name-field input{width:100%;height:50px;border-radius:8px;border:2px solid var(--field);background:var(--field);padding:0 16px;font:inherit;font-size:16px;color:var(--ink);transition:border-color .2s}
+.name-field input:focus{border-color:var(--purple);outline:none}
+.start-row .btn{min-height:50px;height:50px}
+.linkbtn{background:none;border:0;color:var(--purple);font-size:14px;font-weight:500;cursor:pointer;margin-top:14px;padding:4px 8px;border-radius:6px}
+.linkbtn:hover{color:var(--purple-dark);text-decoration:underline}
+
+/* ---------- quiz ---------- */
+.qcard{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 18px 50px rgba(132,50,155,.09);padding:clamp(22px,5vw,48px);position:relative;overflow:hidden}
+.progress{height:6px;background:var(--panel);border-radius:99px;overflow:hidden;margin-bottom:30px}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--purple),#b06ac4);border-radius:99px;transition:width .4s ease}
+.qmeta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px;color:var(--muted);margin-bottom:12px}
+.qmeta .qnum{color:var(--purple);font-weight:600;letter-spacing:.02em}
+.qbody.in-fwd{animation:inFwd .38s cubic-bezier(.2,.8,.2,1) both}
+.qbody.in-back{animation:inBack .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes inFwd{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+@keyframes inBack{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
+.statement{font-size:clamp(24px,3.8vw,34px);font-weight:500;color:var(--ink);line-height:1.25;letter-spacing:-.015em;margin:0 0 34px;min-height:2.5em}
+.statement:focus{outline:none}
+.options{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.opt{appearance:none;border:2px solid var(--line);background:#fff;border-radius:14px;padding:20px 8px 16px;display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer;color:var(--text);text-align:center;transition:border-color .15s,background .15s,transform .15s,box-shadow .15s}
+.opt .n{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:var(--purple);font-weight:700;font-size:18px;transition:background .15s,color .15s,transform .2s}
+.opt[data-v="1"] .n{background:#faf6fc}.opt[data-v="2"] .n{background:#f4ecf8}.opt[data-v="3"] .n{background:#ede1f3}.opt[data-v="4"] .n{background:#e5d4ee}.opt[data-v="5"] .n{background:#dcc4e6}
+.opt .l{font-size:14px;font-weight:500;line-height:1.25}
+@media (hover:hover){.opt:hover{border-color:var(--purple-200);transform:translateY(-2px);box-shadow:0 8px 20px rgba(132,50,155,.12)}}
+.opt:active{transform:scale(.98)}
+.opt[aria-checked=true]{border-color:var(--purple);background:var(--purple-50);box-shadow:0 8px 22px rgba(132,50,155,.16)}
+.opt[aria-checked=true] .n{background:var(--purple);color:#fff;transform:scale(1.06)}
+.opt[aria-checked=true] .l{color:var(--ink);font-weight:600}
+.qnav{display:flex;justify-content:space-between;align-items:center;margin-top:32px;gap:12px}
+.hint{font-size:13px;color:var(--muted);text-align:center;margin:18px 0 0}
+kbd{font-family:inherit;font-size:12px;background:var(--panel);border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:1px 6px;color:var(--text)}
+
+/* ---------- results ---------- */
+.res-head{text-align:center;margin:0 0 28px}
+.res-head h1{font-size:clamp(32px,5vw,46px);margin-bottom:6px}
+.res-head p{margin:0;color:var(--muted)}
+.hero{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;background:linear-gradient(135deg,#8a36a1 0%,#6a2381 60%,#4f1661 100%);color:#fff;border-radius:24px;padding:30px 34px;position:relative;overflow:hidden;box-shadow:0 18px 50px rgba(106,35,129,.28)}
+.hero::after{content:"";position:absolute;right:-80px;top:-80px;width:280px;height:280px;border-radius:50%;border:1px solid rgba(255,255,255,.18);box-shadow:0 0 0 40px rgba(255,255,255,.04),0 0 0 90px rgba(255,255,255,.03)}
+.hero .badge{width:104px;height:104px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:44px;font-weight:700;letter-spacing:-.02em;position:relative;z-index:1;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.hero .eyebrow{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:.8}
+.hero h2{font-size:clamp(28px,4vw,38px);font-weight:500;margin:4px 0 8px;line-height:1.15;letter-spacing:-.01em}
+.hero h2 small{font-size:.55em;opacity:.8;font-weight:500;margin-left:6px;white-space:nowrap}
+.hero p{margin:0;opacity:.92;max-width:560px;position:relative;z-index:1}
+.hero .second{margin-top:10px;font-size:14px;opacity:.78}
+.section-title{font-size:20px;font-weight:600;color:var(--ink);margin:40px 0 14px;display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.section-title span{font-size:13px;font-weight:400;color:var(--muted)}
+.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px 22px 14px}
+#chart svg{display:block;width:100%;height:auto;font-family:var(--font)}
+#chart .tick{font-size:12px;fill:var(--muted)}
+#chart .band-l{font-size:13px;fill:var(--text);font-weight:500}
+#chart .hdr{font-size:12px;font-weight:700;letter-spacing:.06em}
+#chart .val{font-size:16px;font-weight:700;fill:var(--ink);paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+#chart.compact .tick{font-size:13px}
+#chart.compact .hdr{font-size:11px;letter-spacing:0}
+#chart .pt{transform-box:fill-box;transform-origin:center;animation:pop .45s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.legend{display:none;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);padding:6px 4px 4px}
+.legend.show{display:flex}
+.legend b{color:var(--text);font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{--tc:var(--purple);background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px 22px 20px;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;top:0;right:0;height:4px;background:var(--tc)}
+.card.top-trait{border-color:var(--tc);box-shadow:0 10px 30px rgba(0,0,0,.06)}
+.card .row{display:flex;align-items:center;gap:14px}
+.letter{width:46px;height:46px;border-radius:12px;background:var(--tc);color:var(--tt,#fff);display:grid;place-items:center;font-weight:700;font-size:21px;flex:none}
+.card h3{margin:0;font-size:18px;color:var(--ink);font-weight:600;line-height:1.2}
+.chip{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px;margin-top:4px}
+.chip.b4{background:var(--purple);color:#fff}
+.chip.b3{background:var(--purple-100);color:var(--purple-deep)}
+.chip.b2{background:var(--panel);color:var(--text)}
+.chip.b1{background:#fff;color:var(--muted);border:1px solid var(--line)}
+.score{margin-left:auto;text-align:right;font-size:36px;font-weight:600;color:var(--ink);line-height:1;font-variant-numeric:tabular-nums}
+.score small{display:block;font-size:12px;color:var(--muted);font-weight:500;margin-top:4px}
+.track{position:relative;height:10px;border-radius:99px;background:var(--panel);margin:20px 0 4px}
+.track i{position:absolute;left:0;top:0;bottom:0;border-radius:99px;background:var(--tc);width:0;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.track .tk{position:absolute;top:-3px;bottom:-3px;width:2px;background:#fff;transform:translateX(-1px)}
+.track-l{position:relative;height:16px;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.track-l span{position:absolute;transform:translateX(-50%)}
+.track-l span:first-child{transform:none}.track-l span:last-child{transform:translateX(-100%)}
+.card p{margin:10px 0 0;font-size:14.5px;line-height:1.55}
+.card .band-d{color:var(--muted);font-size:13.5px;margin-top:8px}
+.card .watch{background:var(--panel);border-radius:10px;padding:10px 12px;font-size:13.5px;margin-top:12px}
+.card .watch b{color:var(--ink)}
+details.calc{background:#fff;border:1px solid var(--line);border-radius:20px;padding:0}
+details.calc summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px;font-weight:600;color:var(--ink);border-radius:20px}
+details.calc summary::-webkit-details-marker{display:none}
+details.calc summary .chev{width:10px;height:10px;border-right:2px solid var(--purple);border-bottom:2px solid var(--purple);transform:rotate(45deg);transition:transform .2s;margin-right:4px}
+details.calc[open] summary .chev{transform:rotate(-135deg)}
+details.calc summary small{font-weight:400;color:var(--muted);font-size:13px;display:block}
+.calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:0 22px 22px}
+.calc-col{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.calc-col h4{margin:0;padding:8px 10px;background:var(--tc);color:var(--tt,#fff);font-size:12px;text-transform:uppercase;letter-spacing:.06em;display:flex;justify-content:space-between}
+.calc-col table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+.calc-col th{font-weight:600;color:var(--muted);font-size:11px;text-align:left;padding:6px 10px;background:var(--panel)}
+.calc-col th:last-child,.calc-col td:last-child{text-align:right}
+.calc-col td{padding:4px 10px;border-top:1px solid var(--line)}
+.calc-col td:first-child{color:var(--muted)}
+.calc-col td:last-child{font-weight:600;color:var(--ink)}
+.calc-col tfoot td{background:var(--panel);font-weight:700;color:var(--ink);padding:7px 10px}
+.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:36px}
+.disclaimer{font-size:12.5px;color:var(--muted);text-align:center;max-width:640px;margin:22px auto 0}
+footer.foot{text-align:center;font-size:13px;color:var(--muted);padding-top:12px}
+footer.foot a{color:var(--purple);text-decoration:none}
+footer.foot a:hover{color:var(--purple-dark);text-decoration:underline}
+
+@media (max-width:720px){
+  .options{grid-template-columns:1fr;gap:8px}
+  .opt{flex-direction:row;padding:12px 16px;text-align:left;gap:14px}
+  .opt .n{width:38px;height:38px;font-size:16px;flex:none}
+  .opt .l{font-size:16px}
+  .statement{margin-bottom:24px;min-height:0}
+  .cards{grid-template-columns:1fr}
+  .calc-grid{grid-template-columns:repeat(2,1fr)}
+  .hero{grid-template-columns:1fr;text-align:left;gap:18px;padding:24px}
+  .hero .badge{width:76px;height:76px;font-size:32px}
+  .scale-row{grid-template-columns:1fr;gap:6px}
+  .scale-row div{display:flex;align-items:center;gap:12px;text-align:left;padding:8px 12px}
+  .scale-row b{margin:0;font-size:15px;width:14px}
+  .howto{padding:20px}
+  .start-row{flex-direction:column;align-items:stretch}
+  .section-title{flex-wrap:wrap}
+  .hint{display:none}
+  .qnav .btn{padding:0 16px}
+  .actions{flex-direction:column;align-items:stretch}
+  .actions .btn{width:100%}
+  header.top{padding:16px 0 12px}
+  main{justify-content:flex-start;padding-top:4px}
+  .qcard{border-radius:20px}
+  .hero h2 small{display:block;margin:6px 0 0}
+}
+@media (max-width:720px) and (max-height:760px){
+  .qcard{padding:18px}
+  .progress{margin-bottom:18px}
+  .qmeta{margin-bottom:6px}
+  .statement{font-size:22px;margin-bottom:16px}
+  .options{gap:6px}
+  .opt{padding:9px 14px}
+  .opt .n{width:32px;height:32px;font-size:15px}
+  .opt .l{font-size:15px}
+  .qnav{margin-top:16px}
+  .qnav .btn{min-height:46px}
+}
+@media (max-height:500px) and (min-width:721px){
+  header.top{padding:10px 0}
+  main{justify-content:flex-start}
+  .qcard{padding:18px 26px}
+  .progress{margin-bottom:14px}
+  .statement{font-size:22px;margin-bottom:14px;min-height:0}
+  .opt{padding:10px 6px;gap:6px}
+  .opt .n{width:34px;height:34px;font-size:15px}
+  .qnav{margin-top:14px}
+  .hint{display:none}
+}
+@media (max-width:420px){
+  header.top img{height:26px}
+  .calc-grid{padding:0 14px 16px;gap:8px}
+  details.calc summary{padding:16px}
+}
+@media (max-width:380px){
+  .qnav{gap:8px}
+  .qnav .btn{font-size:15px;gap:10px;padding:0 14px}
+  .qnav .btn.primary{flex:1 1 auto}
+}
+@media (max-width:360px){
+  .qnav .btn.ghost .lbl{display:none}
+  .qnav .btn.ghost{background:var(--panel);min-width:46px;padding:0 16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+@media print{
+  @page{margin:14mm}
+  .bg-deco,.no-print,.counter,.home-link{display:none!important}
+  body{background:#fff}
+  .app{max-width:none;padding:0;min-height:0}
+  main{display:block;padding:0}
+  .screen.active{animation:none}
+  .hero,.card::before,.letter,.track i,.calc-col h4,.chip,.progress i{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .hero{box-shadow:none}
+  .panel,.card,.hero,.calc-col{break-inside:avoid}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .calc-grid{grid-template-columns:repeat(4,1fr)}
+  details.calc summary .chev{display:none}
+  .section-title{margin-top:24px}
+}
+</style>
+</head>
+<body data-screen="intro">
+
+<div class="bg-deco" aria-hidden="true">
+  <svg class="d1" viewBox="0 0 600 600" fill="none">
+    <circle cx="300" cy="300" r="250" stroke="#84329b" stroke-opacity=".10" stroke-width="1.2"/>
+    <circle cx="300" cy="300" r="180" stroke="#84329b" stroke-opacity=".07"/>
+    <g stroke="#84329b" stroke-opacity=".16" stroke-width="1.2">
+      <path d="M120 180 L240 110 L360 150 L470 90 M240 110 L300 240 L420 260 L470 90 M300 240 L180 320 L120 180 M420 260 L520 330 L430 420 L300 380 L180 320 M300 380 L300 240 M430 420 L420 260 M300 380 L250 500 L380 520 L430 420 M180 320 L120 440 L250 500"/>
+    </g>
+    <g fill="#84329b">
+      <circle cx="120" cy="180" r="5" fill-opacity=".22"/><circle cx="240" cy="110" r="7" fill-opacity=".18"/><circle cx="360" cy="150" r="4" fill-opacity=".25"/><circle cx="470" cy="90" r="6" fill-opacity=".2"/><circle cx="300" cy="240" r="9" fill-opacity=".14"/><circle cx="420" cy="260" r="5" fill-opacity=".25"/><circle cx="180" cy="320" r="6" fill-opacity=".2"/><circle cx="520" cy="330" r="4" fill-opacity=".25"/><circle cx="430" cy="420" r="8" fill-opacity=".14"/><circle cx="300" cy="380" r="5" fill-opacity=".22"/><circle cx="250" cy="500" r="6" fill-opacity=".18"/><circle cx="380" cy="520" r="4" fill-opacity=".25"/><circle cx="120" cy="440" r="5" fill-opacity=".2"/>
+    </g>
+  </svg>
+  <svg class="d2" viewBox="0 0 600 600" fill="none">
+    <circle cx="300" cy="300" r="240" stroke="#84329b" stroke-opacity=".10" stroke-width="1.2"/>
+    <g stroke="#84329b" stroke-opacity=".14" stroke-width="1.2"><path d="M140 200 L280 140 L400 210 L480 320 L380 430 L240 420 L150 330 Z M280 140 L300 290 L480 320 M300 290 L240 420 M300 290 L150 330"/></g>
+    <g fill="#84329b" fill-opacity=".2"><circle cx="140" cy="200" r="5"/><circle cx="280" cy="140" r="6"/><circle cx="400" cy="210" r="4"/><circle cx="480" cy="320" r="6"/><circle cx="380" cy="430" r="5"/><circle cx="240" cy="420" r="7"/><circle cx="150" cy="330" r="4"/><circle cx="300" cy="290" r="8"/></g>
+  </svg>
+</div>
+
+<div class="app">
+  <header class="top">
+    <a class="brand" href="../" aria-label="Toate chestionarele"><img src="data:image/webp;base64,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" alt="Sfera Business" width="146" height="32"></a>
+    <div class="counter" aria-live="polite"><b id="cNow">1</b> / 80</div>
+    <a class="home-link" href="../">Toate chestionarele</a>
+  </header>
+
+  <main>
+    <!-- ================= INTRO ================= -->
+    <section class="screen active" id="intro" aria-labelledby="introTitle">
+      <div class="intro">
+        <div class="pill"><i></i>Evaluare comportamentală</div>
+        <h1 id="introTitle">Test de personalitate <span class="accent">DISC</span></h1>
+        <p class="lead">Descoperă cum acționezi, cum comunici și cum iei decizii, în 80 de afirmații scurte.</p>
+
+        <div class="howto">
+          <p>Următoarele afirmații descriu comportamente, atitudini și reacții pe care oamenii le pot avea în diverse situații. Citește cu atenție fiecare afirmație și alege răspunsul care ți se potrivește sau te descrie cel mai bine, pe o scară de la 1 la 5:</p>
+          <div class="honest">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            <span>Nu există răspunsuri corecte sau greșite. Încearcă doar să te descrii cât de onest și obiectiv poți!</span>
+          </div>
+          <div class="scale-row" id="scaleRow"></div>
+        </div>
+
+        <div class="facts">
+          <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg>80 afirmații, câte una pe pagină</span>
+          <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>aproximativ 10–15 minute</span>
+          <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>răspunsurile rămân doar în browserul tău</span>
+        </div>
+
+        <div class="start-row">
+          <div class="name-field">
+            <label for="nameInput">Numele tău <span>(opțional, apare pe rezultate)</span></label>
+            <input id="nameInput" type="text" autocomplete="name" placeholder="ex. Ana Popescu" maxlength="60">
+          </div>
+          <button class="btn primary" id="startBtn" type="button"><span id="startLbl">Începe testul</span><span class="tri"></span></button>
+        </div>
+        <button class="linkbtn" id="freshBtn" type="button" hidden>sau începe de la zero</button>
+      </div>
+    </section>
+
+    <!-- ================= QUIZ ================= -->
+    <section class="screen" id="quiz" aria-label="Chestionar">
+      <div class="qcard">
+        <div class="progress" role="progressbar" aria-label="Progres" aria-valuemin="0" aria-valuemax="80" aria-valuenow="0" id="progBar"><i id="progFill"></i></div>
+        <div class="qbody" id="qbody">
+          <div class="qmeta"><span class="qnum" id="qLabel">Afirmația 1 din 80</span><span id="qLeft"></span></div>
+          <h2 class="statement" id="statement" tabindex="-1"></h2>
+          <div class="options" id="options" role="radiogroup" aria-labelledby="statement"></div>
+        </div>
+        <div class="qnav">
+          <button class="btn ghost" id="prevBtn" type="button" aria-label="Înapoi"><span class="tri back"></span><span class="lbl">Înapoi</span></button>
+          <button class="btn primary" id="nextBtn" type="button" disabled><span id="nextLbl">Următoarea</span><span class="tri"></span></button>
+        </div>
+      </div>
+      <p class="hint">Poți răspunde și din tastatură: <kbd>1</kbd>–<kbd>5</kbd> pentru răspuns, <kbd>←</kbd> <kbd>→</kbd> pentru navigare.</p>
+    </section>
+
+    <!-- ================= RESULTS ================= -->
+    <section class="screen" id="results" aria-labelledby="resTitle">
+      <div class="res-head">
+        <div class="pill"><i></i>Test de personalitate DISC</div>
+        <h1 id="resTitle">Rezultatele tale</h1>
+        <p id="resMeta"></p>
+      </div>
+
+      <div class="hero" id="hero"></div>
+
+      <div class="section-title">Reprezentarea grafică a scorurilor <span>scară 20–100</span></div>
+      <div class="panel">
+        <div id="chart"></div>
+        <div class="legend" id="legend"><span><b>80–100</b> ridicat</span><span><b>61–79</b> mediu</span><span><b>41–60</b> scăzut</span><span><b>20–40</b> foarte scăzut</span></div>
+      </div>
+
+      <div class="section-title">Scorurile pe fiecare dimensiune</div>
+      <div class="cards" id="cards"></div>
+
+      <div class="section-title">Calculul scorurilor</div>
+      <details class="calc" id="calc">
+        <summary><div>Răspunsurile tale, grupate pe cele 4 coloane<small>Fiecare dimensiune însumează 20 de afirmații (minim 20, maxim 100)</small></div><span class="chev"></span></summary>
+        <div class="calc-grid" id="calcGrid"></div>
+      </details>
+
+      <div class="actions no-print">
+        <button class="btn primary" id="printBtn" type="button">Printează / salvează PDF<span class="tri"></span></button>
+        <button class="btn" id="copyBtn" type="button">Copiază rezultatele</button>
+        <button class="btn ghost" id="restartBtn" type="button">Reia testul</button>
+      </div>
+      <p class="disclaimer">Rezultatele descriu preferințe comportamentale, nu abilități sau valoare personală. Un scor ridicat sau scăzut nu este „bun” sau „rău”; contează cum îți folosești stilul în context.</p>
+    </section>
+  </main>
+
+  <footer class="foot">Sfera Business · Training · Consulting · Performance · <a href="https://sferabusiness.com/" target="_blank" rel="noopener">sferabusiness.com</a></footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- content ---------- */
+const Q = [
+  "Vreau să am ultimul cuvânt într-o decizie",
+  "Ceilalți îmi spun că sunt o persoană de încredere",
+  "Am capacitatea să îi fac pe oameni să mă placă",
+  "Când mă apuc de un proiect nou caut toate informațiile de care am nevoie",
+  "Sunt o persoană extrem de exigentă",
+  "Îmi vine ușor să vorbesc în fața oamenilor pe care nu îi cunosc",
+  "Sunt factorul hotărâtor când se ia o decizie",
+  "Prefer să îmi ofer sprijinul celor din jur, decât să le spun ce să facă",
+  "Pentru mine este important să primesc aprecieri pentru ceea ce sunt",
+  "Mi se spune că sunt genul de om care n-ar supăra pe nimeni",
+  "Am talentul de a îi influența pe alții prin persuasiune",
+  "Sunt competitiv și nu-mi place să pierd",
+  "Sunt genul de persoană care citește atent instrucțiunile de folosire",
+  "Îmi place să am claritate despre unde vom ajunge, ce se va întâmpla etc.",
+  "Sunt caracterizat ca fiind sufletul petrecerii",
+  "Am un nivel de energie moderat",
+  "Ceilalți cred despre mine că sunt centrul atenției",
+  "Sunt motivat de stabilitate și de predictibilitate",
+  "Tind să depășesc realizările altor persoane, cu care mă compar",
+  "Prefer să fiu/să lucrez într-un grup mic, alături de persoane cunoscute",
+  "Mă străduiesc să duc lucrurile la bun sfârșit și să nu le las la jumătate",
+  "Îmi place să preiau controlul în diverse situații",
+  "Prefer să fiu membru al unei echipe mai mult decât să conduc echipa",
+  "Îmi aleg vorbele cu grijă, înainte să deschid gura",
+  "Schimbările rapide mă destabilizează",
+  "Argumentez fiecare părere pe care o am",
+  "Folosesc un stil mai agresiv când vreau să îmi impun punctul de vedere",
+  "Am nevoie de multă siguranță",
+  "Sunt directiv și autoritar",
+  "Îmi pregătesc deciziile cu multă atenție la detalii",
+  "Tind să încep să fac mai multe lucruri în același timp, pentru că am multă energie",
+  "Îmi place să verific de mai multe ori detaliile unui proiect",
+  "Îmi este greu să iau decizii",
+  "Sunt foarte atent cu standardele și calitatea rezultatelor mele",
+  "Planific atent pentru a evita surprizele",
+  "Am nevoie ca cei din jurul meu să fie obiectivi când îmi argumentează ceva",
+  "Pot să motivez oamenii cu farmecul meu",
+  "Sunt prudent și precaut în decizii și acțiuni",
+  "Renunț cu greu la punctul meu de vedere, îl apăr cu îndârjire",
+  "Oamenii din jur îmi spun că sunt loial",
+  "Mă motivează să am putere/influență asupra altor oameni",
+  "Ceilalți spun despre mine că îi epuizează energia mea",
+  "Orice conflict mă obosește",
+  "Îmi place să am autoritate în fața celorlalți",
+  "Îmi place să fac lucruri extravagante: să port ținute stridente, să încerc mâncare exotică, să merg în locuri rafinate etc.",
+  "Insist ca oamenii să facă lucrurile așa cum vreau eu",
+  "Respect procedurile stabilite",
+  "Tind să îmi asum riscuri mai mari decât media celorlalți",
+  "Prefer să fiu înconjurat de mulți oameni",
+  "Prefer armonia și liniștea, în locul presiunii pe rezultate",
+  "Îmi place să am o rutină de activități pentru că îmi oferă stabilitate",
+  "Leg relații și parteneriate cu oamenii pe termen lung",
+  "Între performanță și confort emoțional, aleg performanța",
+  "Sunt unul dintre cei care vorbesc cel mai mult într-un grup",
+  "Caut să-mi sprijin ideile cu argumente solide, bazate pe fapte și cifre",
+  "Sunt ferm și hotărât când îmi doresc ceva",
+  "Prefer ordinea și disciplina la locul de muncă",
+  "Iau decizii rapid",
+  "Îmi place să primesc admirația celor din jur",
+  "Caut să respect instrucțiunile și procedurile",
+  "Îmi este ușor să îi critic pe ceilalți sau să le atrag atenția când greșesc",
+  "Mă enervez greu pe oameni și tind mai degrabă să fiu blând cu ei",
+  "Am capacitatea să îi captivez pe oameni, cu prezența și modul meu de a fi",
+  "Sunt o persoană rezervată",
+  "Pot fi caracterizat ca fiind nerăbdător",
+  "Reușesc să ridic energia grupului, atunci când sunt prezent",
+  "Am nevoie de sprijin de la ceilalți",
+  "Îmi place să formez alianțe pentru a-mi atinge scopul",
+  "Îmi place să calculez cu precizie posibilele rezultate",
+  "Impun standarde înalte celor din jur",
+  "Sunt foarte optimist",
+  "Mi s-a spus că mă concentrez prea mult pe detalii",
+  "Acționez spontan",
+  "Am tendința de a controla munca altora",
+  "Îmi exprim ușor emoțiile și gândurile",
+  "Mi s-a dat de înțeles că sunt ușor influențabil de alte persoane",
+  "Îmi planific atent ziua și activitățile",
+  "Îmi place să spun bancuri și să fac mici glume pe seama altora",
+  "Prefer să fiu rezervat și mai retras în grupuri",
+  "Sunt atent să nu fac greșeli în ceea ce lucrez"
+];
+
+/* scoring key, exactly as on the "Reprezentarea grafică a scorurilor" sheet */
+const KEY = {
+  D:[1,5,7,12,19,22,27,29,39,41,44,46,48,53,56,58,61,65,70,74],
+  I:[3,6,9,11,15,17,31,37,42,45,49,54,59,63,66,68,71,73,75,78],
+  S:[2,8,10,14,18,20,23,25,28,33,35,40,43,47,50,52,62,67,76,79],
+  C:[4,13,16,21,24,26,30,32,34,36,38,51,55,57,60,64,69,72,77,80]
+};
+
+const SCALE = [
+  {v:1, l:"Aproape niciodată"},
+  {v:2, l:"Rar"},
+  {v:3, l:"Uneori"},
+  {v:4, l:"Adesea"},
+  {v:5, l:"Aproape întotdeauna"}
+];
+
+const TRAITS = [
+  {k:"D", name:"Dominant", hex:"#c0392b", txt:"#fff",
+   desc:"Direct, hotărât și orientat spre rezultate. Îți plac provocările, deciziile rapide și să ai controlul situației.",
+   watch:"Poți părea nerăbdător sau prea direct. Ascultarea activă îți crește impactul."},
+  {k:"I", name:"Influent", hex:"#e3a522", txt:"#3b2a00",
+   desc:"Sociabil, entuziast și convingător. Aduci energie în grup, legi relații ușor și motivezi prin optimism.",
+   watch:"Poți scăpa din vedere detaliile. Puțină structură te ajută să duci ideile până la capăt."},
+  {k:"S", name:"Stabil", hex:"#5b9a3c", txt:"#fff",
+   desc:"Calm, loial și răbdător. Pui preț pe armonie, predictibilitate și pe relațiile de lungă durată din echipă.",
+   watch:"Poți evita conflictul sau schimbarea. Spune-ți deschis punctul de vedere, chiar și când e incomod."},
+  {k:"C", name:"Conform", hex:"#3a6fc2", txt:"#fff",
+   desc:"Analitic, precis și riguros. Te ghidezi după fapte, standarde înalte și proceduri clare.",
+   watch:"Poți deveni prea critic sau lent în decizii. Acceptă un nivel rezonabil de incertitudine."}
+];
+
+/* bands as drawn on the paper chart: separators sit under 80, above 60 and above 40 */
+function band(s){
+  if (s >= 80) return {id:4, label:"Scor ridicat",       d:"Trăsătură foarte pronunțată, ușor de observat în comportamentul tău de zi cu zi."};
+  if (s >= 61) return {id:3, label:"Scor mediu",         d:"Trăsătură prezentă, pe care o folosești flexibil, în funcție de context."};
+  if (s >= 41) return {id:2, label:"Scor scăzut",        d:"Trăsătură folosită ocazional, mai puțin naturală pentru tine."};
+  return            {id:1, label:"Scor foarte scăzut", d:"Trăsătură puțin prezentă în stilul tău."};
+}
+
+/* ---------- state ---------- */
+const N = Q.length;
+const STORE = "sfera-disc-v1";
+const state = {answers:Array(N).fill(null), idx:0, name:"", done:false, doneAt:null};
+let dir = 1, advanceTimer = null, demo = false;
+
+function save(){ if (demo) return; try { localStorage.setItem(STORE, JSON.stringify(state)); } catch(e){} }
+function loadSaved(){
+  try {
+    const s = JSON.parse(localStorage.getItem(STORE) || "null");
+    if (s && Array.isArray(s.answers) && s.answers.length === N) { Object.assign(state, s); return true; }
+  } catch(e){}
+  return false;
+}
+function reset(){
+  state.answers = Array(N).fill(null); state.idx = 0; state.done = false; state.doneAt = null;
+}
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const answeredCount = () => state.answers.filter(v => v != null).length;
+const firstUnanswered = () => { const i = state.answers.findIndex(v => v == null); return i < 0 ? N - 1 : i; };
+
+function show(id){
+  document.querySelectorAll(".screen").forEach(s => s.classList.toggle("active", s.id === id));
+  document.body.dataset.screen = id;
+  window.scrollTo({top:0});
+}
+
+/* ---------- intro ---------- */
+$("scaleRow").innerHTML = SCALE.map(o => `<div><b>${o.v}</b>${o.l}</div>`).join("");
+
+function initIntro(){
+  const had = loadSaved();
+  $("nameInput").value = state.name || "";
+  const n = answeredCount();
+  if (had && state.done && n === N) {
+    $("startLbl").textContent = "Vezi rezultatele salvate";
+    $("freshBtn").hidden = false;
+  } else if (had && n > 0) {
+    $("startLbl").textContent = `Continuă de la afirmația ${firstUnanswered() + 1}`;
+    $("freshBtn").hidden = false;
+  } else {
+    $("startLbl").textContent = "Începe testul";
+    $("freshBtn").hidden = true;
+  }
+}
+
+$("startBtn").addEventListener("click", () => {
+  state.name = $("nameInput").value.trim();
+  if (state.done && answeredCount() === N) { save(); showResults(); return; }
+  state.idx = answeredCount() > 0 ? firstUnanswered() : 0;
+  save(); startQuiz();
+});
+$("freshBtn").addEventListener("click", () => {
+  state.name = $("nameInput").value.trim();
+  reset(); save(); startQuiz();
+});
+$("nameInput").addEventListener("keydown", e => { if (e.key === "Enter") $("startBtn").click(); });
+
+/* ---------- quiz ---------- */
+const optsEl = $("options");
+optsEl.innerHTML = SCALE.map(o =>
+  `<button type="button" class="opt" role="radio" aria-checked="false" data-v="${o.v}"><span class="n">${o.v}</span><span class="l">${o.l}</span></button>`
+).join("");
+const optBtns = [...optsEl.querySelectorAll(".opt")];
+optBtns.forEach(b => b.addEventListener("click", () => choose(+b.dataset.v)));
+$("prevBtn").addEventListener("click", prev);
+$("nextBtn").addEventListener("click", next);
+
+function startQuiz(){ dir = 1; show("quiz"); renderQ(true); }
+
+function paintState(){
+  const i = state.idx, v = state.answers[i], n = answeredCount();
+  optBtns.forEach(b => {
+    const on = +b.dataset.v === v;
+    b.setAttribute("aria-checked", on ? "true" : "false");
+    b.tabIndex = (v == null ? +b.dataset.v === 1 : on) ? 0 : -1;
+  });
+  $("progFill").style.width = (n / N * 100) + "%";
+  $("progBar").setAttribute("aria-valuenow", n);
+  $("nextBtn").disabled = v == null;
+  $("nextLbl").textContent = i === N - 1 ? "Vezi rezultatele" : "Următoarea";
+  $("prevBtn").disabled = false;
+  const left = N - n;
+  $("qLeft").textContent = left === 0 ? "toate completate ✓" : `${left} ${left === 1 ? "rămasă" : "rămase"}`;
+}
+
+function renderQ(animate){
+  const i = state.idx;
+  $("statement").textContent = Q[i];
+  $("qLabel").textContent = `Afirmația ${i + 1} din ${N}`;
+  $("cNow").textContent = i + 1;
+  paintState();
+  const ae = document.activeElement;
+  if (ae && ae.classList && ae.classList.contains("opt")) $("statement").focus({preventScroll:true});
+  if (animate && window.scrollY > 0) window.scrollTo({top:0, behavior:"smooth"});
+  if (animate) {
+    const qb = $("qbody");
+    qb.classList.remove("in-fwd", "in-back"); void qb.offsetWidth;
+    qb.classList.add(dir > 0 ? "in-fwd" : "in-back");
+  }
+}
+
+function choose(v){
+  state.answers[state.idx] = v; save(); paintState();
+  clearTimeout(advanceTimer);
+  advanceTimer = setTimeout(next, 330);
+}
+function next(){
+  clearTimeout(advanceTimer);
+  if (state.answers[state.idx] == null) return;
+  if (state.idx < N - 1) { state.idx++; dir = 1; save(); renderQ(true); }
+  else finish();
+}
+function prev(){
+  clearTimeout(advanceTimer);
+  if (state.idx > 0) { state.idx--; dir = -1; save(); renderQ(true); }
+  else { initIntro(); show("intro"); }
+}
+function finish(){
+  const miss = state.answers.findIndex(v => v == null);
+  if (miss >= 0) { state.idx = miss; dir = -1; renderQ(true); return; }
+  state.done = true; state.doneAt = Date.now(); save(); showResults();
+}
+
+document.addEventListener("keydown", e => {
+  if (document.body.dataset.screen !== "quiz") return;
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  if (e.target.matches && e.target.matches("input,textarea")) return;
+  if (/^[1-5]$/.test(e.key)) { e.preventDefault(); choose(+e.key); }
+  else if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
+  else if (e.key === "ArrowRight") { e.preventDefault(); if (state.answers[state.idx] != null) next(); }
+  else if (e.key === "Enter" && !(e.target.closest && e.target.closest("button"))) { if (state.answers[state.idx] != null) next(); }
+});
+
+/* ---------- results ---------- */
+function computeScores(){
+  const r = {};
+  TRAITS.forEach(t => { r[t.k] = KEY[t.k].reduce((s, n) => s + state.answers[n - 1], 0); });
+  return r;
+}
+
+let lastScores = null;
+function showResults(){
+  const sc = lastScores = computeScores();
+  const date = new Date(state.doneAt || Date.now()).toLocaleDateString("ro-RO", {day:"numeric", month:"long", year:"numeric"});
+  $("resTitle").textContent = state.name ? `Rezultate DISC: ${state.name}` : "Rezultatele tale";
+  $("resMeta").textContent = `Completat pe ${date} · 80 din 80 de afirmații`;
+
+  /* hero */
+  const ranked = TRAITS.slice().sort((a, b) => sc[b.k] - sc[a.k]);
+  const max = sc[ranked[0].k];
+  const tops = ranked.filter(t => sc[t.k] === max);
+  const rest = ranked.filter(t => sc[t.k] !== max);
+  const badge = tops.length === 1
+    ? `<div class="badge" style="color:${tops[0].hex}">${tops[0].k}</div>`
+    : `<div class="badge" style="font-size:${tops.length > 2 ? 26 : 34}px">${tops.map(t => `<span style="color:${t.hex}">${t.k}</span>`).join("")}</div>`;
+  const second = rest.length ? `<p class="second">Urmat de: ${rest.map(t => `${t.name} (${sc[t.k]})`).join(" · ")}</p>` : "";
+  $("hero").innerHTML = `${badge}
+    <div>
+      <div class="eyebrow">${tops.length === 1 ? "Stilul tău predominant" : "Stiluri predominante, la egalitate"}</div>
+      <h2>${tops.map(t => t.name).join(" & ")}<small>${max} / 100 · ${band(max).label.toLowerCase()}</small></h2>
+      <p>${tops.map(t => t.desc).join(" ")}</p>
+      ${second}
+    </div>`;
+
+  /* cards */
+  $("cards").innerHTML = TRAITS.map(t => {
+    const s = sc[t.k], b = band(s), isTop = s === max;
+    return `<article class="card${isTop ? " top-trait" : ""}" style="--tc:${t.hex};--tt:${t.txt}">
+      <div class="row">
+        <div class="letter">${t.k}</div>
+        <div><h3>${t.name}</h3><span class="chip b${b.id}">${b.label}</span></div>
+        <div class="score">${s}<small>din 100</small></div>
+      </div>
+      <div class="track" aria-hidden="true"><i data-w="${(s - 20) / 80 * 100}"></i><span class="tk" style="left:25%"></span><span class="tk" style="left:50%"></span><span class="tk" style="left:75%"></span></div>
+      <div class="track-l" aria-hidden="true"><span style="left:0">20</span><span style="left:25%">40</span><span style="left:50%">60</span><span style="left:75%">80</span><span style="left:100%">100</span></div>
+      <p>${t.desc}</p>
+      <p class="band-d">${b.d}</p>
+      <div class="watch"><b>De urmărit:</b> ${t.watch}</div>
+    </article>`;
+  }).join("");
+
+  /* calculation table */
+  $("calcGrid").innerHTML = TRAITS.map(t => `
+    <div class="calc-col" style="--tc:${t.hex};--tt:${t.txt}">
+      <h4><span>${t.name}</span><span>${t.k}</span></h4>
+      <table>
+        <thead><tr><th>Afirmația</th><th>Răspuns</th></tr></thead>
+        <tbody>${KEY[t.k].map(n => `<tr title="${esc(Q[n - 1])}"><td>${n}</td><td>${state.answers[n - 1]}</td></tr>`).join("")}</tbody>
+        <tfoot><tr><td>Total</td><td>${sc[t.k]}</td></tr></tfoot>
+      </table>
+    </div>`).join("");
+
+  show("results");
+  renderChart(sc, true);
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    document.querySelectorAll(".track i").forEach(el => { el.style.width = el.dataset.w + "%"; });
+  }));
+}
+
+function renderChart(sc, animate){
+  const wrap = $("chart");
+  const cw = wrap.clientWidth || 640;
+  const compact = cw < 560;
+  $("legend").classList.toggle("show", compact);
+  wrap.classList.toggle("compact", compact);
+  const W = compact ? 360 : 720, H = compact ? 420 : 460;
+  const padL = 40, padR = compact ? 10 : 150, top = 62, bot = H - 20;
+  const plotW = W - padL - padR;
+  const y = v => bot - (v - 20) / 80 * (bot - top);
+  const x = i => padL + plotW * (i + .5) / 4;
+  const bands = [
+    {from:80, to:100, label:"Scor ridicat",       fill:"#f4ecf8"},
+    {from:60, to:80,  label:"Scor mediu",         fill:"#faf6fc"},
+    {from:40, to:60,  label:"Scor scăzut",        fill:"#f4ecf8"},
+    {from:20, to:40,  label:"Scor foarte scăzut", fill:"#faf6fc"}
+  ];
+  const lineEnd = compact ? padL + plotW : W - 6;
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Grafic scoruri DISC: ${TRAITS.map(t => `${t.name} ${sc[t.k]}`).join(", ")}">`;
+  bands.forEach(b => {
+    s += `<rect x="${padL}" y="${y(b.to)}" width="${plotW}" height="${y(b.from) - y(b.to)}" fill="${b.fill}"/>`;
+    if (!compact) s += `<text class="band-l" x="${padL + plotW + 18}" y="${(y(b.from) + y(b.to)) / 2 + 4}">${b.label}</text>`;
+  });
+  for (let v = 25; v < 100; v += 5) if (v % 20) s += `<line x1="${padL - 4}" x2="${padL}" y1="${y(v)}" y2="${y(v)}" stroke="#cfc3d6"/>`;
+  [20, 40, 60, 80, 100].forEach(v => {
+    const strong = v === 20 || v === 100;
+    s += `<line x1="${padL}" x2="${lineEnd}" y1="${y(v)}" y2="${y(v)}" stroke="${v === 80 ? "#b58cc4" : strong ? "#d9cbe1" : "#dcc4e6"}" stroke-width="${v === 80 ? 2 : 1}"${strong ? "" : ' stroke-dasharray="5 4"'}/>`;
+    s += `<text class="tick" x="${padL - 8}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
+  });
+  const hw = Math.min(plotW / 4 - 12, 118);
+  TRAITS.forEach((t, i) => {
+    s += `<line x1="${x(i)}" x2="${x(i)}" y1="${top}" y2="${bot}" stroke="#e6e1ea"/>`;
+    s += `<rect x="${x(i) - hw / 2}" y="12" width="${hw}" height="30" rx="7" fill="${t.hex}"/>`;
+    s += `<text class="hdr" x="${x(i)}" y="32" text-anchor="middle" fill="${t.txt}">${compact ? t.name : t.name.toUpperCase()}</text>`;
+  });
+  const pts = TRAITS.map((t, i) => [x(i), y(sc[t.k])]);
+  s += `<polyline class="pline" points="${pts.map(p => p.map(n => n.toFixed(1)).join(",")).join(" ")}" fill="none" stroke="#84329b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>`;
+  TRAITS.forEach((t, i) => {
+    const [px, py] = pts[i];
+    s += `<circle class="pt" cx="${px}" cy="${py}" r="10" fill="${t.hex}" stroke="#fff" stroke-width="3" style="animation-delay:${animate ? .25 + i * .15 : 0}s"/>`;
+    s += `<text class="val" x="${px + 16}" y="${py + 6}">${sc[t.k]}</text>`;
+  });
+  s += `</svg>`;
+  wrap.innerHTML = s;
+  if (animate) {
+    const pl = wrap.querySelector(".pline");
+    const L = pl.getTotalLength();
+    pl.style.strokeDasharray = L; pl.style.strokeDashoffset = L;
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      pl.style.transition = "stroke-dashoffset 1.2s ease .35s"; pl.style.strokeDashoffset = 0;
+    }));
+  }
+}
+
+let rz;
+window.addEventListener("resize", () => {
+  clearTimeout(rz);
+  rz = setTimeout(() => { if (document.body.dataset.screen === "results" && lastScores) renderChart(lastScores, false); }, 150);
+});
+window.addEventListener("beforeprint", () => { $("calc").open = true; });
+
+$("printBtn").addEventListener("click", () => { $("calc").open = true; window.print(); });
+
+$("copyBtn").addEventListener("click", () => {
+  const sc = lastScores || computeScores();
+  const lines = [
+    "Test de personalitate DISC · Sfera Business",
+    state.name ? `Nume: ${state.name}` : null,
+    `Data: ${new Date(state.doneAt || Date.now()).toLocaleDateString("ro-RO")}`,
+    "",
+    ...TRAITS.map(t => `${t.name} (${t.k}): ${sc[t.k]} / 100 · ${band(sc[t.k]).label}`),
+    "",
+    "Răspunsuri (afirmație: răspuns): " + state.answers.map((v, i) => `${i + 1}:${v}`).join(", ")
+  ].filter(l => l !== null).join("\n");
+  const done = () => { const b = $("copyBtn"); b.textContent = "Copiat ✓"; setTimeout(() => { b.textContent = "Copiază rezultatele"; }, 1800); };
+  const fallback = () => {
+    const ta = document.createElement("textarea"); ta.value = lines; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch(e){}
+    ta.remove();
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(lines).then(done, fallback);
+  else fallback();
+});
+
+let restartArmed = false, restartT;
+$("restartBtn").addEventListener("click", () => {
+  const b = $("restartBtn");
+  if (!restartArmed) {
+    restartArmed = true; b.textContent = "Sigur? Apasă din nou";
+    restartT = setTimeout(() => { restartArmed = false; b.textContent = "Reia testul"; }, 3000);
+    return;
+  }
+  clearTimeout(restartT); restartArmed = false; b.textContent = "Reia testul";
+  demo = false; reset(); save(); initIntro(); show("intro");
+});
+
+/* ---------- boot ---------- */
+initIntro();
+if (location.hash === "#demo") {
+  demo = true;
+  state.answers = Array.from({length:N}, () => 1 + Math.floor(Math.random() * 5));
+  state.done = true; state.doneAt = Date.now();
+  showResults();
+}
+})();
+</script>
+</body>
+</html>
