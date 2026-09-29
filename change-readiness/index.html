@@ -286,6 +286,7 @@ footer.foot a:hover{color:var(--purple-dark);text-decoration:underline}
 .hero .badge .num{font-size:40px;font-weight:700;letter-spacing:-.02em}
 .hero .badge .lbl{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:4px}
 .hl{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;position:relative;z-index:1}
+.hl.one{grid-template-columns:1fr;max-width:340px}
 .hl div{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:12px 14px}
 .hl span{display:block;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.75;margin-bottom:4px}
 .hl b{display:flex;justify-content:space-between;gap:10px;font-weight:500;font-size:15px;line-height:1.5}
@@ -680,19 +681,37 @@ function showResults(){
   const avg = Math.round(res.reduce((t, r) => t + r.score, 0) / res.length);
   const max = ranked[0].score;
   const tops = ranked.filter(r => r.score === max);
-  const strong = ranked.slice(0, 2), weak = ranked.slice(-2).reverse();
+  const allEqual = ranked[0].score === ranked[ranked.length - 1].score;
+  const strong = ranked.slice(0, 2);
+  const minStrong = Math.min(...strong.map(r => r.score));
+  const weak = ranked.slice(-2).reverse().filter(r => !strong.includes(r) && r.score < minStrong);
   const li = r => `<b>${r.s.name}<em>${r.score}</em></b>`;
+  let eyebrow, title, desc;
+  if (allEqual) {
+    eyebrow = "Profil echilibrat"; title = "Toate scalele au același scor";
+    desc = `Nicio scală nu iese în evidență: toate au ${max} din 100.`;
+  } else if (tops.length === 1) {
+    eyebrow = "Cea mai puternică resursă a dvs. în fața schimbării";
+    title = `${tops[0].s.name}<small>${max} / 100</small>`; desc = tops[0].s.desc;
+  } else if (tops.length === 2) {
+    eyebrow = "Cele mai puternice resurse, la egalitate";
+    title = `${tops.map(r => r.s.name).join(" & ")}<small>${max} / 100</small>`; desc = "";
+  } else {
+    eyebrow = "Cele mai puternice resurse, la egalitate";
+    title = `${tops.length} scale la egalitate<small>${max} / 100</small>`; desc = tops.map(r => r.s.name).join(", ") + ".";
+  }
+  const hl = allEqual ? "" : `<div class="hl${weak.length ? "" : " one"}">
+        <div><span>Puncte forte</span>${strong.map(li).join("")}</div>
+        ${weak.length ? `<div><span>De dezvoltat</span>${weak.map(li).join("")}</div>` : ""}
+      </div>`;
 
   $("hero").innerHTML = `
     <div class="badge"><span class="num">${avg}</span><span class="lbl">media</span></div>
     <div>
-      <div class="eyebrow">${tops.length === 1 ? "Cea mai puternică resursă a dvs. în fața schimbării" : "Cele mai puternice resurse, la egalitate"}</div>
-      <h2>${tops.map(r => r.s.name).join(" & ")}<small>${max} / 100</small></h2>
-      <p>${tops.length === 1 ? tops[0].s.desc : ""}</p>
-      <div class="hl">
-        <div><span>Puncte forte</span>${strong.map(li).join("")}</div>
-        <div><span>De dezvoltat</span>${weak.map(li).join("")}</div>
-      </div>
+      <div class="eyebrow">${eyebrow}</div>
+      <h2>${title}</h2>
+      <p>${desc}</p>
+      ${hl}
     </div>`;
 
   $("bars").innerHTML = ranked.map(r => `
