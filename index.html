@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Chestionare de autoevaluare Sfera Business: testul de personalitate DISC și chestionarul de Change Readiness.">
+<meta name="description" content="Chestionare de autoevaluare Sfera Business: DISC, Change Readiness și Calitatea motivației.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Chestionare de autoevaluare · Sfera Business">
-<meta property="og:description" content="Test de personalitate DISC și Chestionar de Change Readiness. Câte o afirmație pe pagină, cu rezultatele afișate imediat.">
+<meta property="og:description" content="DISC, Change Readiness și Calitatea motivației. Câte o afirmație pe pagină, cu rezultatele afișate imediat.">
 <meta property="og:image" content="https://adrianflorian.github.io/chestionare/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -280,9 +280,29 @@ footer.foot a:hover{color:var(--purple-dark);text-decoration:underline}
 }
 
 /* ---------- homepage ---------- */
-.home{text-align:center;max-width:880px;margin:0 auto}
+.home{text-align:center;max-width:1080px;margin:0 auto}
+body[data-screen=home] .app{max-width:1140px}
+/* coach */
+.coach{display:flex;align-items:center;gap:26px;max-width:760px;margin:0 auto 40px;text-align:left}
+.coach-photo{flex:none;position:relative;width:128px;height:128px;border:0;padding:0;background:none;cursor:pointer;border-radius:50%}
+.coach-photo img{width:128px;height:128px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 5px #fff,0 0 0 8px var(--purple),0 14px 34px rgba(132,50,155,.28);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.coach-photo .tag{position:absolute;right:-10px;bottom:2px;background:#fff;border-radius:99px;font-size:20px;line-height:1;padding:6px 7px;box-shadow:0 4px 14px rgba(0,0,0,.14)}
+@media (hover:hover){.coach-photo:hover img{transform:rotate(-6deg) scale(1.04)}}
+.coach-photo.wiggle img{animation:wig .5s ease}
+@keyframes wig{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg)}60%{transform:rotate(6deg)}}
+.bubble{position:relative;flex:1;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px 22px 14px;box-shadow:0 12px 40px rgba(132,50,155,.09)}
+.bubble::before{content:"";position:absolute;left:-9px;top:50%;width:16px;height:16px;background:#fff;border-left:1px solid var(--line);border-bottom:1px solid var(--line);transform:translateY(-50%) rotate(45deg)}
+.bubble .qt{font-size:19px;line-height:1.4;color:var(--ink);font-weight:500;margin:0;min-height:2.8em;transition:opacity .25s}
+.bubble .qt.fade{opacity:0}
+.bubble .who{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;flex-wrap:wrap}
+.bubble .who b{color:var(--purple);font-size:14px}
+.bubble .who small{display:block;color:var(--muted);font-size:12px;font-weight:400}
+.next-q{border:1.5px solid var(--purple-200);background:var(--purple-50);color:var(--purple-deep);font-size:13px;font-weight:600;border-radius:99px;padding:6px 14px;cursor:pointer;transition:background .2s}
+@media (hover:hover){.next-q:hover{background:var(--purple-100)}}
+.next-q:focus-visible,.coach-photo:focus-visible{outline:3px solid rgba(132,50,155,.35);outline-offset:3px}
 .home .lead{margin-bottom:38px}
-.tests{display:grid;grid-template-columns:1fr 1fr;gap:20px;text-align:left}
+.tests{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:left}
+@media (max-width:960px){.tests{grid-template-columns:1fr 1fr}}
 .tcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;text-decoration:none;color:var(--text);box-shadow:0 12px 40px rgba(132,50,155,.07);transition:transform .2s,box-shadow .2s,border-color .2s}
 @media (hover:hover){.tcard:hover{transform:translateY(-3px);box-shadow:0 18px 50px rgba(132,50,155,.14);border-color:var(--purple-200)}
 .tcard:hover .btn{background:var(--purple-dark);border-color:var(--purple-dark)}.tcard:hover .tri{transform:translateX(3px)}}
@@ -306,6 +326,10 @@ footer.foot a:hover{color:var(--purple-dark);text-decoration:underline}
 .privacy{font-size:13px;color:var(--muted);margin:28px auto 0;display:flex;justify-content:center;align-items:center;gap:8px}
 .privacy svg{color:var(--purple)}
 @media (max-width:720px){
+  .coach{flex-direction:column;gap:18px;text-align:center;margin-bottom:30px}
+  .bubble::before{left:50%;top:-9px;transform:translateX(-50%) rotate(135deg)}
+  .bubble .who{justify-content:center}
+  .bubble .qt{font-size:17px}
   .tests{grid-template-columns:1fr;gap:14px}
   .tviz{height:92px}
   .tviz .dash{top:46px}
@@ -344,6 +368,20 @@ footer.foot a:hover{color:var(--purple-dark);text-decoration:underline}
       <h1 id="homeTitle">Alegeți <span class="accent">chestionarul</span></h1>
       <p class="lead">Câte o afirmație pe pagină, cu rezultatele afișate imediat la final.</p>
 
+      <div class="coach">
+        <button class="coach-photo" id="coachPhoto" type="button" aria-label="Încă un citat de la Cătălin">
+          <img src="data:image/webp;base64,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" alt="Cătălin Stancu" width="128" height="128">
+          <span class="tag" aria-hidden="true">💬</span>
+        </button>
+        <div class="bubble" aria-live="polite">
+          <p class="qt" id="quote">„Nu există răspunsuri greșite. Există doar răspunsuri date înainte de cafea.” ☕</p>
+          <div class="who">
+            <div><b>— Cătălin Stancu</b><small>Citate inventate, cu drag. Orice asemănare cu un training real e pur întâmplătoare.</small></div>
+            <button class="next-q" id="nextQuote" type="button">Încă unul ↻</button>
+          </div>
+        </div>
+      </div>
+
       <div class="tests">
         <a class="tcard" href="disc/" data-key="sfera-disc-v1" data-n="80">
           <div class="tviz" aria-hidden="true">
@@ -363,7 +401,7 @@ footer.foot a:hover{color:var(--purple-dark);text-decoration:underline}
           </div>
         </a>
 
-        <a class="tcard" href="change-readiness/" data-key="sfera-cr-v1" data-n="35">
+        <a class="tcard" href="change-readiness/" data-key="sfera-cr-v1" data-n="35" data-formal="1">
           <div class="tviz cr" aria-hidden="true">
             <span class="dash"></span>
             <i style="height:70px;opacity:.55"></i><i style="height:88px;opacity:.9"></i><i style="height:52px;opacity:.45"></i><i style="height:96px"></i><i style="height:62px;opacity:.6"></i><i style="height:80px;opacity:.8"></i><i style="height:44px;opacity:.4"></i>
@@ -375,6 +413,24 @@ footer.foot a:hover{color:var(--purple-dark);text-decoration:underline}
             <div class="tmeta">
               <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg>35 de afirmații</span>
               <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>5–7 minute</span>
+            </div>
+            <div class="tstatus"><span class="mini"><b></b></span><span class="stxt"></span></div>
+            <span class="btn primary"><span class="cta">Începeți chestionarul</span><span class="tri"></span></span>
+          </div>
+        </a>
+
+        <a class="tcard" href="motivatie/" data-key="sfera-mot-v1" data-n="18" data-formal="1">
+          <div class="tviz cr" aria-hidden="true">
+            <span class="dash"></span>
+            <i style="height:92px"></i><i style="height:80px;opacity:.85"></i><i style="height:70px;opacity:.72"></i><i style="height:52px;opacity:.58"></i><i style="height:60px;opacity:.48"></i><i style="height:30px;opacity:.35"></i>
+          </div>
+          <div class="tbody">
+            <div class="tkicker">Motivație</div>
+            <h2>Calitatea motivației</h2>
+            <p>De ce vă implicați în munca de acum. Profil pe 6 tipuri de motivație, conform teoriei auto-determinării.</p>
+            <div class="tmeta">
+              <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg>18 afirmații</span>
+              <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>3–5 minute</span>
             </div>
             <div class="tstatus"><span class="mini"><b></b></span><span class="stxt"></span></div>
             <span class="btn primary"><span class="cta">Începeți chestionarul</span><span class="tri"></span></span>
@@ -400,7 +456,7 @@ footer.foot a:hover{color:var(--purple-dark);text-decoration:underline}
     const n = s.answers.filter(v => v != null).length;
     if (n === 0) return;
     const st = card.querySelector(".tstatus"), cta = card.querySelector(".cta");
-    const formal = card.dataset.key === "sfera-cr-v1";
+    const formal = card.dataset.formal === "1";
     st.classList.add("show");
     st.querySelector(".mini b").style.width = (n / total * 100) + "%";
     if (s.done && n === total) {
@@ -411,6 +467,33 @@ footer.foot a:hover{color:var(--purple-dark);text-decoration:underline}
       cta.textContent = formal ? "Continuați" : "Continuă";
     }
   });
+})();
+
+(function(){
+  /* invented, affectionate quotes, clearly labelled as such on the page */
+  const QUOTES = [
+    "„Nu există răspunsuri greșite. Există doar răspunsuri date înainte de cafea.” ☕",
+    "„Schimbarea e singura constantă. În afară de pauza de prânz, care e sfântă.” 🥪",
+    "„Dacă ți-a ieșit «Dominant», felicitări. Acum lasă-i și pe ceilalți să vorbească.” 🎤",
+    "„Toleranța la ambiguitate se antrenează. Recomand instrucțiunile de montaj de la mobilă.” 🪛",
+    "„Motivația intrinsecă e când completezi chestionarul fără să te roage nimeni. Deci nu azi.” 😄",
+    "„Fii stabil ca un Wi-Fi bun: nu cădea exact când e mai mare nevoie de tine.” 📶",
+    "„Adaptabilitate înseamnă să zâmbești când ședința de 30 de minute ține două ore.” ⏰",
+    "„Sinceritatea e primul pas. Al doilea e să nu bifezi «5» la toate.” ✅",
+    "„Un lider adevărat știe când să vorbească și când să apese «Următoarea».” ▶️",
+    "„Optimismul e să crezi că termini toate trei chestionarele până la cafea.” 🚀"
+  ];
+  const q = document.getElementById("quote"), photo = document.getElementById("coachPhoto");
+  let i = Math.floor(Math.random() * QUOTES.length);
+  q.textContent = QUOTES[i];
+  function nextQuote(){
+    i = (i + 1 + Math.floor(Math.random() * (QUOTES.length - 1))) % QUOTES.length;
+    q.classList.add("fade");
+    setTimeout(() => { q.textContent = QUOTES[i]; q.classList.remove("fade"); }, 220);
+    photo.classList.remove("wiggle"); void photo.offsetWidth; photo.classList.add("wiggle");
+  }
+  document.getElementById("nextQuote").addEventListener("click", nextQuote);
+  photo.addEventListener("click", nextQuote);
 })();
 </script>
 </body>
